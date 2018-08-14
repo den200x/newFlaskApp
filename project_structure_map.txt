@@ -1,0 +1,12 @@
+newFlaskSite/
+    venv/ #1
+    app/ #2
+        templates/
+            base.html #4.1
+            index.html #4.2
+            login.html #6.1
+        __init__.py #3
+        routes.py #4 #6.2
+        forms.py #6
+    inventory.py #5
+    config.py
