@@ -4,15 +4,23 @@
     <h1>Sign In</h1>
     <form action="" method ="POST" novalidate>
         {{ form.hidden_tag() }} <!--generates hidden field for token such as SECRET_KEY against CSRF attacks-->
+        
         <p>
             {{ form.username.label }}<br><!--linebreak-->
             {{ form.username(size=32) }}<!--reference link: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms -->
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}        
         </p>
         <p>
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
         </p>
         <p>{{ form.remember_me() }} {{form.remember_me.label}}</p>
         <p>{{ form.submit() }}</p>
+        <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
     </form>
 {% endblock %}
